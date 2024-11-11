@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Cursos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl font-bold text-gray-900 text-center mb-8">
+                Listado de Cursos
+            </h1>
+
+            <!-- Grid de cursos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {{#each cursos}}
+                <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                    <!-- Barra superior decorativa -->
+                    <div class="h-2 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
+                    
+                    <div class="p-6">
+                        <!-- Título del curso -->
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">{{nombre}}</h2>
+                        
+                        <!-- Detalles del curso -->
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center text-gray-600">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/>
+                                </svg>
+                                <span>Código: <span class="font-medium">{{codigo}}</span></span>
+                            </div>
+
+                            <div class="flex items-center text-gray-600">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                                </svg>
+                                <span>Créditos: <span class="font-medium">{{creditos}}</span></span>
+                            </div>
+
+                            <div class="flex items-center text-gray-600">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                                <span>Semestre: <span class="font-medium">{{semestre}}</span></span>
+                            </div>
+                        </div>
+
+                        <!-- Botones de accion -->
+                        <div class="flex space-x-3">
+                            <a href="/cursos/{{codigo}}" 
+                               class="flex-1 inline-flex justify-center items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                                Ver Detalles
+                            </a>
+                            <button onclick="confirmDelete('{{codigo}}')" 
+                                    class="inline-flex justify-center items-center px-4 py-2 text-sm font-medium rounded-md text-red-600 bg-red-50 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmacion personalizado -->
+    <div id="deleteModal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                    <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                            <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                            </div>
+                            <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                <h3 class="text-base font-semibold leading-6 text-gray-900">Eliminar Curso</h3>
+                                <div class="mt-2">
+                                    <p class="text-sm text-gray-500">¿Estás seguro de que deseas eliminar este curso? Esta acción no se puede deshacer.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                        <button type="button" id="confirmDeleteBtn" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
+                            Eliminar
+                        </button>
+                        <button type="button" id="cancelDeleteBtn" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentCursoCode = null;
+        const deleteModal = document.getElementById('deleteModal');
+        
+        function confirmDelete(codigo) {
+            currentCursoCode = codigo;
+            deleteModal.classList.remove('hidden');
+        }
+
+        document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+            if (currentCursoCode) {
+                fetch(`/cursos/${currentCursoCode}`, { method: 'DELETE' })
+                    .then(response => {
+                        if (response.ok) {
+                            location.reload();
+                        }
+                    });
+            }
+            deleteModal.classList.add('hidden');
+        });
+
+        document.getElementById('cancelDeleteBtn').addEventListener('click', function() {
+            deleteModal.classList.add('hidden');
+            currentCursoCode = null;
+        });
+
+        // Cerrar modal al hacer clic fuera
+        deleteModal.addEventListener('click', function(e) {
+            if (e.target === deleteModal) {
+                deleteModal.classList.add('hidden');
+                currentCursoCode = null;
+            }
+        });
+    </script>
+    <!-- Footer -->
+    <footer class="bg-white mt-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-500 text-sm">
+                © 2024 Gestión De Cursos. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

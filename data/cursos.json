@@ -1,0 +1,23 @@
+[
+  {
+    "codigo": "DAM101",
+    "nombre": "Introducción a la Programación",
+    "creditos": 3,
+    "semestre": 1,
+    "descripcion": "Fundamentos de la programación y lógica computacional."
+  },
+  {
+    "codigo": "DAM339",
+    "nombre": "Curso nuevo - prueba",
+    "creditos": 3,
+    "semestre": 1,
+    "descripcion": "Descripcion del curso con el codigo DAM339"
+  },
+  {
+    "codigo": "DAM363",
+    "nombre": "Curso nuevo - prueba",
+    "creditos": 3,
+    "semestre": 1,
+    "descripcion": "Curso de prueba, practica 4"
+  }
+]

@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+const aplicacion = require('../app');
+const depuracion = require('debug')('sistema-cursos:servidor');
+const http = require('http');
+
+// Establecer el puerto del servidor
+const puerto = normalizarPuerto(process.env.PORT || '5000');
+aplicacion.set('port', puerto);
+
+// Crear el servidor HTTP
+const servidor = http.createServer(aplicacion);
+
+servidor.listen(puerto);
+servidor.on('error', manejarError);
+servidor.on('listening', enEscucha);
+
+/**
+ * Normaliza el puerto en un número, string, o false
+ * @param {string} val - Valor del puerto a normalizar
+ * @returns {number|string|boolean} Puerto normalizado
+ */
+function normalizarPuerto(val) {
+  const puerto = parseInt(val, 10);
+  if (isNaN(puerto)) return val;
+  if (puerto >= 0) return puerto;
+  return false;
+}
+
+/**
+ * Manejador de errores del servidor HTTP
+ * @param {Error} error - Error producido
+ */
+function manejarError(error) {
+  if (error.syscall !== 'listen') throw error;
+  
+  const bind = typeof puerto === 'string' ? 'Pipe ' + puerto : 'Puerto ' + puerto;
+
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requiere privilegios elevados');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' ya está en uso');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Evento de servidor en escucha
+ */
+function enEscucha() {
+  const direccion = servidor.address();
+  const bind = typeof direccion === 'string' ? 'pipe ' + direccion : 'puerto ' + direccion.puerto;
+  depuracion('Escuchando en ' + bind);
+}

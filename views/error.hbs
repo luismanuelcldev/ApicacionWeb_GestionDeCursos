@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - Pagina no encontrada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Efecto de fondo animado */
+        .animated-background {
+            background: linear-gradient(130deg, #1e3a8a, #1d4ed8, #1e40af, #1e3a8a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Animacion de fade-in */
+        .fade-in {
+            animation: fadeIn 1.5s ease forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center h-screen animated-background">
+
+    <div class="text-center space-y-8 fade-in max-w-lg mx-auto px-4 py-8 rounded-lg bg-gray-800/60 shadow-lg backdrop-blur-md">
+        <!-- Icono de error con efecto de rotacion -->
+        <div class="flex justify-center mb-6">
+            <div class="bg-red-600 p-4 rounded-full shadow-lg transform hover:rotate-12 transition duration-300 ease-in-out">
+                <svg class="h-12 w-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12.84A9 9 0 105.16 3.17L3 5l.84.16a9 9 0 0016.33 7.68L21 12.84z"></path>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Titulo de error -->
+        <h1 class="text-8xl font-extrabold text-red-500">{{error.status}}</h1>
+        
+        <!-- Mensaje de error con animacion -->
+        <h2 class="text-2xl font-semibold mb-4 text-gray-300 animate-pulse">{{message}}</h2>
+        
+        <!-- Mensaje adicional con sugerencia de busqueda -->
+        <p class="text-gray-400 text-lg">Parece que la página que buscas no está disponible. A lo mejor puedas encontrar lo que necesitas aquí:</p>
+        
+        <!-- Botones de navegacion adicionales con íconos -->
+        <div class="flex justify-center space-x-4 mt-6">
+            <a href="/cursos" class="flex items-center px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-lg transition transform hover:scale-105">
+                <svg class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M3 12l18-12v18l-18-6zm5.1 1.66l10.14 3.46v-12.78l-10.14 9.32z"/></svg>
+                Ir a Cursos
+            </a>
+        </div>
+    </div>
+</body>
+</html>
