@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- Configuración básica del documento -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Cursos</title>
+    <!-- Importación de Tailwind CSS para estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
+    <!-- Contenedor principal con padding responsivo -->
     <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
         <!-- Header -->
         <div class="max-w-7xl mx-auto">
@@ -14,19 +18,22 @@
                 Listado de Cursos
             </h1>
 
-            <!-- Grid de cursos -->
+            <!-- Grid responsivo de tarjetas de cursos -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Iteración sobre cada curso -->
                 {{#each cursos}}
+                <!-- Barra decorativa superior con gradiente -->
                 <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-                    <!-- Barra superior decorativa -->
+                    <!-- Barra decorativa superior con gradiente -->
                     <div class="h-2 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
                     
                     <div class="p-6">
                         <!-- Título del curso -->
                         <h2 class="text-xl font-semibold text-gray-800 mb-4">{{nombre}}</h2>
                         
-                        <!-- Detalles del curso -->
+                        <!-- Lista de detalles del curso con iconos -->
                         <div class="space-y-3 mb-6">
+                            <!-- Código del curso -->
                             <div class="flex items-center text-gray-600">
                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/>
@@ -34,6 +41,7 @@
                                 <span>Código: <span class="font-medium">{{codigo}}</span></span>
                             </div>
 
+                        <!-- Semestre del curso -->
                             <div class="flex items-center text-gray-600">
                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
@@ -51,10 +59,12 @@
 
                         <!-- Botones de accion -->
                         <div class="flex space-x-3">
+                            <!-- Botón de ver detalles -->
                             <a href="/cursos/{{codigo}}" 
                                class="flex-1 inline-flex justify-center items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
                                 Ver Detalles
                             </a>
+                            <!-- Botón de eliminar -->
                             <button onclick="confirmDelete('{{codigo}}')" 
                                     class="inline-flex justify-center items-center px-4 py-2 text-sm font-medium rounded-md text-red-600 bg-red-50 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,18 +79,21 @@
         </div>
     </div>
 
-    <!-- Modal de confirmacion personalizado -->
+    <!-- Modal de confirmación para eliminar curso -->
     <div id="deleteModal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
         <div class="fixed inset-0 z-10 overflow-y-auto">
             <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                 <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                    <!-- Contenido del modal -->
                     <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                         <div class="sm:flex sm:items-start">
+                            <!-- Icono de advertencia -->
                             <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
                                 <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
                                 </svg>
                             </div>
+                            <!-- Texto del modal -->
                             <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                                 <h3 class="text-base font-semibold leading-6 text-gray-900">Eliminar Curso</h3>
                                 <div class="mt-2">
@@ -89,6 +102,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Botones del modal -->
                     <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                         <button type="button" id="confirmDeleteBtn" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
                             Eliminar
@@ -102,35 +116,50 @@
         </div>
     </div>
 
+<!-- Scripts para la funcionalidad del modal de eliminación -->
     <script>
+        // Inicializo la variable currentCursoCode para almacenar el código del curso que se va a eliminar.
         let currentCursoCode = null;
+        // Obtengo el modal de confirmación de eliminación utilizando su ID.
         const deleteModal = document.getElementById('deleteModal');
         
+        // Defino la función confirmDelete que se activa cuando quiero confirmar la eliminación de un curso.
         function confirmDelete(codigo) {
+            // Almaceno el código del curso que se va a eliminar en currentCursoCode.
             currentCursoCode = codigo;
+             // Muestro el modal de confirmación al quitar la clase 'hidden'.
             deleteModal.classList.remove('hidden');
         }
 
+        // Agrego un evento al botón de confirmación de eliminación.
         document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+            // Verifico si hay un código de curso almacenado.
             if (currentCursoCode) {
+                 // Realizo una solicitud DELETE al servidor para eliminar el curso correspondiente.
                 fetch(`/cursos/${currentCursoCode}`, { method: 'DELETE' })
                     .then(response => {
+                         // Si la respuesta es exitosa, recargo la página para reflejar los cambios.
                         if (response.ok) {
                             location.reload();
                         }
                     });
             }
+            // Oculto el modal de confirmación después de intentar eliminar.
             deleteModal.classList.add('hidden');
         });
 
+        // Agrego un evento al botón de cancelación de eliminación.
         document.getElementById('cancelDeleteBtn').addEventListener('click', function() {
+             // Oculto el modal de confirmación y restablezco currentCursoCode a null.
             deleteModal.classList.add('hidden');
             currentCursoCode = null;
         });
 
-        // Cerrar modal al hacer clic fuera
+         // Agrego un evento al modal para cerrarlo al hacer clic fuera de él.
         deleteModal.addEventListener('click', function(e) {
+             // Verifico si el clic fue en el fondo del modal.
             if (e.target === deleteModal) {
+                // Oculto el modal y restablezco currentCursoCode a null.
                 deleteModal.classList.add('hidden');
                 currentCursoCode = null;
             }

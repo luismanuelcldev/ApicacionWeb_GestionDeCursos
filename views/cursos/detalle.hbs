@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles del Curso</title>
+    <!-- Importación de Tailwind CSS para estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Definición de la animación flotante para el ícono del banner -->
     <style>
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
+
+        /* Clase para aplicar la animación flotante */
         .float-animation {
             animation: float 3s ease-in-out infinite;
         }
     </style>
 </head>
+
 <body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
-    <!-- Navbar -->
+<!-- Barra de navegación superior -->
     <nav class="bg-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <a href="/cursos" class="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors duration-200">
+                    <!-- Botón de retorno a la lista de cursos -->
+                    <a href="/cursos"
+                        class="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors duration-200">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                         </svg>
                         <span class="font-medium">Volver a Cursos</span>
                     </a>
@@ -33,37 +51,42 @@
         </div>
     </nav>
 
+<!-- Contenido principal -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Header Section -->
+<!-- Título principal y línea decorativa -->
         <div class="text-center mb-12">
             <h1 class="text-4xl font-bold text-gray-900 mb-4">Detalles del Curso</h1>
             <div class="h-1 w-24 bg-blue-600 mx-auto rounded-full"></div>
         </div>
 
-        <!-- Course Details Card -->
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden max-w-4xl mx-auto transform hover:scale-[1.01] transition-transform duration-300">
-            <!-- Header Banner -->
+<!-- Tarjeta principal con la información del curso -->
+        <div
+            class="bg-white rounded-2xl shadow-xl overflow-hidden max-w-4xl mx-auto transform hover:scale-[1.01] transition-transform duration-300">
+            <!-- Banner superior con ícono animado -->
             <div class="bg-gradient-to-r from-blue-600 to-blue-400 h-32 flex items-center justify-center">
                 <div class="float-animation">
                     <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
                 </div>
             </div>
 
-            <!-- Course Content -->
+            <!-- Contenido de la tarjeta Curso -->
             <div class="px-8 py-6">
-                <!-- Course Title -->
+                <!-- Título del curso -->
                 <h2 class="text-3xl font-bold text-gray-800 mb-6">{{curso.nombre}}</h2>
 
-                <!-- Course Info Grid -->
+<!-- Grid de información básica del curso -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <!-- Codigo del curso -->
+                    <!-- Sección del código del curso -->
                     <div class="bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors duration-200">
                         <div class="flex items-center space-x-3">
                             <div class="bg-blue-100 p-3 rounded-lg">
-                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/>
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
                                 </svg>
                             </div>
                             <div>
@@ -77,8 +100,10 @@
                     <div class="bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors duration-200">
                         <div class="flex items-center space-x-3">
                             <div class="bg-green-100 p-3 rounded-lg">
-                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
                             <div>
@@ -92,8 +117,10 @@
                     <div class="bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors duration-200">
                         <div class="flex items-center space-x-3">
                             <div class="bg-purple-100 p-3 rounded-lg">
-                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                 </svg>
                             </div>
                             <div>
@@ -103,12 +130,14 @@
                         </div>
                     </div>
 
-                    <!-- Seccion de Estatus -->
+                    <!-- Sección de estado del curso -->
                     <div class="bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors duration-200">
                         <div class="flex items-center space-x-3">
                             <div class="bg-yellow-100 p-3 rounded-lg">
-                                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
                             <div>
@@ -119,29 +148,31 @@
                     </div>
                 </div>
 
-                <!-- Seccion de Descripcion -->
+            <!-- Sección de descripción del curso -->
                 <div class="bg-gray-50 rounded-xl p-6 mb-8">
                     <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
                         <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         Descripción del Curso
                     </h3>
                     <p class="text-gray-700 leading-relaxed">{{curso.descripcion}}</p>
                 </div>
-
-                <!-- Action Buttons -->
+                
+                <!-- Botón de retorno a la lista -->
                 <div class="flex flex-wrap gap-4 justify-center">
-                    <a href="/cursos" 
-                       class="inline-flex items-center px-6 py-3 rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200 transform hover:scale-105">
+                    <a href="/cursos"
+                        class="inline-flex items-center px-6 py-3 rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200 transform hover:scale-105">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                         </svg>
                         Volver a la lista
                     </a>
                 </div>
             </div>
-        </div>    
+        </div>
     </main>
 
     <!-- Footer -->
@@ -153,4 +184,5 @@
         </div>
     </footer>
 </body>
+
 </html>

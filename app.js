@@ -7,9 +7,7 @@ var logger = require('morgan');
 //Inicializo la aplicacion Express.
 var app = express();
 
-//Importo los enrutadores que definen las rutas para el indice (index), los usuarios (users), y el modulo para cursos (cursos).
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+//Importo los enrutadores que definen las rutas para el modulo de cursos (cursos).
 var cursosRouter = require('./routes/cursos'); // Importa el enrutador de cursos
 
 
@@ -22,7 +20,7 @@ app.set('view engine', 'hbs');
 app.use(logger('dev')); //logger para registrar las solicitudes en modo "dev".
 
 //express.json y express.urlencoded para procesar datos en JSON y formularios.
-app.use(express.json()); 
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser()); //cookieParser para manejar cookies.
@@ -31,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public'))); //express.static para s
 // Configuración de rutas
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/', cursosRouter); 
+app.use('/', cursosRouter);
 
 // Manejo los errores 404 redirigiendo cualquier ruta no encontrada a un error 404.
 
@@ -40,7 +38,7 @@ app.use('/', cursosRouter);
 // Captura errores 404 y los pasa al manejador de errores
 
 // Manejador de errores
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // Configura el estado HTTP y renderiza la vista de error
   res.status(err.status || 500);
   res.render('error', { error: err });
